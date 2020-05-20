@@ -2,6 +2,7 @@
 #include<vector>
 #include<algorithm>
 #include<cmath>
+#include<iostream>
 using namespace std;
 
 #define min 1e-6
@@ -32,6 +33,11 @@ Polynomial::Polynomial(const Polynomial &A){
     }
     init_legal();
 }
+
+void Polynomial::AssignName(string Pname){
+    this->name=Pname;
+}
+
 
 void Polynomial::init_legal(){
     for(int i=this->len()-1;i<this->len();i--){
@@ -103,4 +109,17 @@ Polynomial& Polynomial::operator*(const Polynomial& A){
 Polynomial& Polynomial::operator/(const Polynomial& A){
     Polynomial k;
     return k;
+}
+
+ostream &operator << (ostream &putout, const Polynomial &A){
+    for(int i=A.len()-1;i>=0;i++){
+        if(fabs(A.a[i]<=min))continue;
+        if(i!=A.len()-1&&A.a[i]>0)putout<<'+';
+        if(i!=A.len()-1&&A.a[i]<0)putout<<'-';
+        if(i!=0&&fabs(A.a[i]-1)>min&&fabs(A.a[i]+1)>min)putout<<A.a[i];
+        if(i==0)putout<<A.a[i];
+        if(i!=0)putout<<'x^'<<i;
+    }
+    if(!A.len())putout<<'0';
+    return putout;
 }

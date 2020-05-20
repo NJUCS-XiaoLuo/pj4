@@ -1,7 +1,9 @@
+#include"Window.h"
 #include<iostream>
 using namespace std;
 
 int main(){
-    cout<<"mypj4"<<endl;
+    Window MainWindow;
+    MainWindow.show();
     return 0;
 }
