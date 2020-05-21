@@ -5,6 +5,7 @@
 #include<iostream>
 #include<algorithm>
 #include<cmath>
+#include<vector>
 using namespace std;
 
 
@@ -14,7 +15,8 @@ private:
 public:
     CmdDeal(){Po.clear();}
     ~CmdDeal(){Po.clear();}
-    bool AddPo(int len,int* m,string name);
+    bool AddPo(int mysize,double* M,string pname);
+    bool ScanPo(string name);
 };
 
 

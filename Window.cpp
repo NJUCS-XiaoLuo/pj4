@@ -33,16 +33,20 @@ void Window::add(){
     cout<<"您要添加的多项式的长度为：";
     int len;
     cin>>len;
-    int m[1000];
+    double* m=new double[1000];
+    for(int i=0;i<1000;i++)m[i]=0;
     cout<<"请输入每一项（用空格隔开）：";
     for(int i=0;i<len;i++){
         cin>>m[i];
     }
-    string name;
+    string pname;
     cout<<"请给他命名（英文字母表示）：";
-    cin>>name;
-    if(!(this->cmd->AddPo(len,m,name)))cout<<"您输入的多项式不符合要求，请重新输入"<<endl;
-    else cout<<"恭喜你，添加成功！"<<endl;
+    cin>>pname;
+    if(!(cmd->AddPo(len,m,pname)))cout<<"您输入的多项式不符合要求，请重新输入"<<endl;
+    else {
+        cout<<"恭喜你，添加成功！"<<endl;
+        this->show();
+    }
     return;
 }
 void Window::calculate(){
@@ -58,5 +62,13 @@ void Window::getroot(){
     return;
 }
 void Window::scan(){
+    cout<<"请输入多项式的名字：";
+    string Pname;
+    cin>>Pname;
+    if(!(this->cmd->ScanPo(Pname))){
+        cout<<"该多项式不存在！"<<endl;
+        this->show();
+    }
+    this->show();
     return;
 }
