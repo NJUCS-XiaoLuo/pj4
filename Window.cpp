@@ -50,6 +50,9 @@ void Window::add(){
     return;
 }
 void Window::calculate(){
+    cout<<"请输入表达式：";
+    string ex;
+    cmd->analy(ex,0);
     return;
 }
 void Window::divideormod(){
